@@ -1,0 +1,26 @@
+---
+layout: default
+list_title: Jekyll recipes
+---
+<div class="container home">
+  {%- if site.recipes.size > 0 -%}
+  <h2>Recipes</h2>
+  <ul class="list-unstyled">
+    {%- for recipe in site.recipes -%}
+    <li class="media">
+      <!--<img class="mr-3" src="..." alt="Generic placeholder image">-->
+      <div class="media-body">
+        <h5 class="mt-0 mb-1">
+          <a class="post-link" href="{{ recipe.url | relative_url }}">
+            {{ recipe.title | escape }}
+          </a>
+        </h5>
+        {%- if site.show_excerpts -%}
+          {{ recipe.excerpt }}
+        {%- endif -%}
+      </div>
+    </li>
+    {%- endfor -%}
+  </ul>
+  {%- endif -%}
+</div>

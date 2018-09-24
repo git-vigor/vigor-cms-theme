@@ -1,0 +1,98 @@
+---
+layout: default
+---
+<div class="container" vocab="http://schema.org/" typeof="Recipe">
+
+
+  <div class="row">
+    <div class="col">
+      <h2 property="name">{{ page.title }}</h2>
+      {%- include author.html -%}
+      <div class="container" property="description">
+        {{page.content}}
+      </div>
+    </div>
+
+    <div class="col col-lg-4">
+      <div class="container">
+        <dl class="row bg-light border border-white">
+          {% if page.preptime.value %}
+          <dt class="col-sm-8 text-right primary border border-white">Prep Time:</dt>
+          <dd class="col-sm-4">
+            <meta property="prepTime" content="PT{{ page.preptime.value }}{{ page.preptime.units }}">
+            {{ page.preptime.value }} {{ page.preptime.units }}
+          </dd>
+          {% endif %}
+
+          {% if page.cooktime.value %}
+          <dt class="col-sm-8 text-right primary border border-white">Prep Time:</dt>
+          <dd class="col-sm-4">
+            <meta property="cookTime" content="PT{{ page.cooktime.value }}{{ page.cooktime.units }}">
+            {{ page.cooktime.value }} {{ page.cooktime.units }}
+          </dd>
+          {% endif %}
+
+          {% if page.yield %}
+          <dt class="col-sm-8 text-right primary border border-white">Yield:</dt>
+          <dd class="col-sm-4">
+              <span property="recipeYield">{{ page.yield }}</span>
+          </dd>
+          {% endif %}
+
+          {% if page.nutritionalData.calories %}
+          <dt class="col-sm-8 text-right primary border border-white">Calories:</dt>
+          <dd class="col-sm-4">
+              <span property="calories">{{ page.nutritionalData.calories }}</span>
+          </dd>
+          {% endif %}
+
+          {% if page.nutritionalData.fatContent %}
+          <dt class="col-sm-8 text-right primary border border-white">Fat Content:</dt>
+          <dd class="col-sm-4">
+              <span property="fatContent">{{ page.nutritionalData.fatContent }}</span>
+          </dd>
+          {% endif %}
+
+        </dl>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+<div class="container">
+  <div class="card-deck">
+      
+      <div class="ingredients card">
+          {% if page.ingredients %}
+            <h4 class="text-center card-header">Ingredients:</h4>
+            <div class="card-body">
+              <ul property="ingredients" class="card-body">
+                {% for ingredient in page.ingredients %}
+                <li property="recipeIngredient">{{ ingredient | markdownify }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
+      </div>
+
+      <div class="directions card">
+          {% if page.directions %}
+            <h4 class="text-center card-header">Directions:</h4>
+            <div class="card-body">
+              <ol property="recipeInstructions" class="card-body">
+                {% for direction in page.directions %}
+                <li>{{ direction | markdownify }}</li>
+                {% endfor %}
+              </ol>
+            </div>
+          {% endif %}
+      </div>
+
+  </div>
+</div>
+
+{%- include date.html -%}
