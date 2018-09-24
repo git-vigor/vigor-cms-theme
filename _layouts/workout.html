@@ -1,0 +1,24 @@
+---
+layout: default
+---
+
+<div class="container">
+  <div class="card-deck">
+      
+    {% if page.warm_up !=empty and page.warm_up != nil %}
+    <div class="warm-up card" card">
+      <h4 class="text-center card-header">Warm Up:</h4>
+      <div class="card-body">
+        <ul class="card-body">
+          {% for exercise in page.warm_up %}
+          <li>{{ exercise.exercise | markdownify }}: {{ exercise.quantity | markdownify }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    {% endif %}
+
+  </div>
+</div>
+
+{%- include date.html -%}
