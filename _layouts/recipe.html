@@ -16,7 +16,7 @@ layout: default
     <div class="col col-lg-4">
       <div class="container">
         <dl class="row bg-light border border-white">
-          {% if page.preptime.value %}
+          {% if page.preptime.value != empty and page.preptime.value != nil %}
           <dt class="col-sm-8 text-right primary border border-white">Prep Time:</dt>
           <dd class="col-sm-4">
             <meta property="prepTime" content="PT{{ page.preptime.value }}{{ page.preptime.units }}">
@@ -24,7 +24,7 @@ layout: default
           </dd>
           {% endif %}
 
-          {% if page.cooktime.value %}
+          {% if page.cooktime.value != empty and page.cooktime.value != nil %}
           <dt class="col-sm-8 text-right primary border border-white">Prep Time:</dt>
           <dd class="col-sm-4">
             <meta property="cookTime" content="PT{{ page.cooktime.value }}{{ page.cooktime.units }}">
@@ -32,21 +32,21 @@ layout: default
           </dd>
           {% endif %}
 
-          {% if page.yield %}
+          {% if page.yield != empty and page.yield != nil %}
           <dt class="col-sm-8 text-right primary border border-white">Yield:</dt>
           <dd class="col-sm-4">
               <span property="recipeYield">{{ page.yield }}</span>
           </dd>
           {% endif %}
 
-          {% if page.nutritionalData.calories %}
+          {% if page.nutritionalData.calories != empty and page.nutritionalData.calories != nil %}
           <dt class="col-sm-8 text-right primary border border-white">Calories:</dt>
           <dd class="col-sm-4">
               <span property="calories">{{ page.nutritionalData.calories }}</span>
           </dd>
           {% endif %}
 
-          {% if page.nutritionalData.fatContent %}
+          {% if page.nutritionalData.fatContent != empty and page.nutritionalData.fatContent != nil %}
           <dt class="col-sm-8 text-right primary border border-white">Fat Content:</dt>
           <dd class="col-sm-4">
               <span property="fatContent">{{ page.nutritionalData.fatContent }}</span>
