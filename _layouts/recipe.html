@@ -25,7 +25,7 @@ layout: default
           {% endif %}
 
           {% if page.cooktime.value != empty and page.cooktime.value != nil %}
-          <dt class="col-sm-8 text-right primary border border-white">Prep Time:</dt>
+          <dt class="col-sm-8 text-right primary border border-white">Cook Time:</dt>
           <dd class="col-sm-4">
             <meta property="cookTime" content="PT{{ page.cooktime.value }}{{ page.cooktime.units }}">
             {{ page.cooktime.value }} {{ page.cooktime.units }}

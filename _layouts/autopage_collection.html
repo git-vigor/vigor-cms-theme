@@ -1,9 +1,6 @@
 ---
 layout: default
-list_title: Jekyll recipes
 ---
-
-
 <!-- Just some nice to have styles for the pager buttons -->
 <style>
   ul.pager { text-align: center; list-style: none; }
@@ -12,7 +9,10 @@ list_title: Jekyll recipes
 
 <div class="home">
 
-  <h1 class="page-heading">AutoPage Collection <b>{% if page.autopages %}{{page.autopages.display_name}}{% endif %}</b> Page {{page.pagination_info.curr_page}} of {{page.pagination_info.total_pages}}</h1>
+  <h1 class="page-heading">
+    <b>{% if page.autopages %}{{page.autopages.display_name}}{% endif %}</b> 
+    Page {{page.pagination_info.curr_page}} of {{page.pagination_info.total_pages}}
+  </h1>
   
   AUTO CREATED FOR ALL COLLECTIONS IN THE SITE
 
@@ -25,7 +25,12 @@ list_title: Jekyll recipes
     -->
     {% for post in paginator.posts %}
       <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}{% if post.book.rank %} | Rank: {{ post.book.rank }}{% endif %}{% if post.collection %} | {{ post.collection }}{% endif %}{% if post.tags %}<br>Tags: {{ post.tags }}{% endif %}</span>
+        <span class="post-meta">
+          {{ post.date | date: "%b %-d, %Y" }}
+          {% if post.book.rank %} | Rank: {{ post.book.rank }}{% endif %}
+          {% if post.collection %} | {{ post.collection }}{% endif %}
+          {% if post.tags %}<br>Tags: {{ post.tags }}{% endif %}
+        </span>
         <h2>
           <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
         </h2>
@@ -53,28 +58,4 @@ list_title: Jekyll recipes
 
   <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
 
-</div>
-
-
-<div class="container home">
-  {%- if site.recipes.size > 0 -%}
-  <h2>Recipes</h2>
-  <ul class="list-unstyled">
-    {%- for recipe in paginator.recipes -%}
-    <li class="media">
-      <!--<img class="mr-3" src="..." alt="Generic placeholder image">-->
-      <div class="media-body">
-        <h5 class="mt-0 mb-1">
-          <a class="post-link" href="{{ recipe.url | relative_url }}">
-            {{ recipe.title | escape }}
-          </a>
-        </h5>
-        {%- if site.show_excerpts -%}
-          {{ recipe.excerpt }}
-        {%- endif -%}
-      </div>
-    </li>
-    {%- endfor -%}
-  </ul>
-  {%- endif -%}
 </div>

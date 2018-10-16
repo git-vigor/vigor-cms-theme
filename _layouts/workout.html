@@ -18,6 +18,33 @@ layout: default
     </div>
     {% endif %}
 
+    {% if page.workout !=empty and page.workout != nil %}
+    <div class="workout card" card">
+      <h4 class="text-center card-header">Workout:</h4>
+      <div class="card-body">
+        <ul class="card-body">
+          {% for exercise in page.workout %}
+          <li>{{ exercise.exercise | markdownify }}: {{ exercise.quantity | markdownify }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    {% endif %}
+
+    {% if page.cool_down !=empty and page.cool_down != nil %}
+    <div class="cool_down card" card">
+      <h4 class="text-center card-header">Cool-Down:</h4>
+      <div class="card-body">
+        <ul class="card-body">
+          {% for exercise in page.cool_down %}
+          <li>{{ exercise.exercise | markdownify }}: {{ exercise.quantity | markdownify }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    {% endif %}
+
+
   </div>
 </div>
 
